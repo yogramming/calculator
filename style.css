@@ -17,12 +17,29 @@ body {
     background: linear-gradient(45deg, #0a0a0a, #3a4452);
 }
 
+.heading {
+    text-transform: uppercase;
+    background: linear-gradient(45deg, #100e0e33, #3a4452);
+    border-radius: 16px;
+    text-align: center;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 3em;
+    letter-spacing: 0.1em;
+    box-shadow: 13px 3px 18px rgb(0, 0, 0);
+    text-shadow: 
+        1px 1px 0 rgba(255, 255, 255, 0.3), /* Light shadow */
+        2px 2px 0 rgba(0, 0, 0, 0.3); /* Dark shadow for depth */
+
+}
+
 .calculator {
-    border: 1px solid #717377;
+    border: 1px solid #030303;
     padding: 20px;
+    margin-top: 30px;
     border-radius: 16px;
     background: transparent;
-    box-shadow: 0px 3px 15px rgba(113, 115, 119, 0.5);
+    box-shadow: 10px 3px 15px rgba(0, 0, 0, 1);
 }
 
 input {
