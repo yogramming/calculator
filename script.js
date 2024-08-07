@@ -41,19 +41,33 @@ arr.forEach(button => {
                 num1 = null;
                 num2 = null;
                 operator = "";
+                string = "";
             }
         }
         else {
-            // Check if the button's value is a number
-            if (!isNaN(e.target.innerHTML)) {
+            // Check if the button's value is a number or a decimal
+            if (!isNaN(e.target.innerHTML) || e.target.innerHTML === ".") {
                 // If no operator has been entered, build num1
                 if (operator === "") {
-                    num1 = num1 === null ? e.target.innerHTML : num1 + e.target.innerHTML;
+                    if (num1 === null) {
+                        num1 = e.target.innerHTML;
+                    } else {
+                        if (!(num1.includes(".")) || !(e.target.innerHTML === ".")) {
+                        num1 += e.target.innerHTML;
+                        }
+                    }
                 } 
+
                 // If operator exists, build num2
                 else {
-                    num2 = num2 === null ? e.target.innerHTML : num2 + e.target.innerHTML;
-                }
+                    if (num2 === null) {
+                        num2 = e.target.innerHTML;
+                    } else {
+                        if (!(num2.includes(".")) || !(e.target.innerHTML === ".")) {
+                        num2 += e.target.innerHTML;
+                        }
+                    }
+                } 
             }
 
             else {
@@ -63,7 +77,6 @@ arr.forEach(button => {
                 }
                 else if (num2 !== null) {
                     num1 = operate(num1, operator, num2);
-                    // input.value = num1;
                     operator = e.target.innerHTML;
                     num2 = null;
                 }
@@ -77,9 +90,13 @@ arr.forEach(button => {
     })
 })
 
+
 function operate(num1, operator, num2) {
     num1 = parseFloat(num1);
     num2 = parseFloat(num2);
+
+    num1 = Math.round(num1 * 100) / 100;
+    num2 = Math.round(num2 * 100) / 100;
     if (operator === "+") {
         return num1 + num2;
     }
